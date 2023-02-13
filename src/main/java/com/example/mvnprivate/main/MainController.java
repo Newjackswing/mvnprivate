@@ -23,6 +23,7 @@ public class MainController {
             HttpServletRequest request,
             Model model
     ){
+        /* vue 파일로는 이동이 안됨 */
         System.out.println("vue :::::::::::::::::::::::::::::::::");
         return "vue/index.vue";
     }
