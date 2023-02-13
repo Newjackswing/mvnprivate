@@ -12,6 +12,8 @@ module.exports = {
     svgRule.use("vue-svg-loader").loader("vue-svg-loader");
   }
 };
+
+
 // outputDir: "../src/main/resources/static",  // 빌드 타겟 디렉토리
 //     devServer: {
 //   proxy: {
