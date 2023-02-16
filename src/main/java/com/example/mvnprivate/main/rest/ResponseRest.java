@@ -14,6 +14,13 @@ import java.sql.Timestamp;
  */
 public class ResponseRest  {
 
+    /**
+     * 400
+     * @param request
+     * @param message
+     * @param object
+     * @return
+     */
     public static ResponseEntity getRestVoBadRequestError(HttpServletRequest request, String message, Object object){
         String path = request.getRequestURI();
         Timestamp timestamp =  new Timestamp(System.currentTimeMillis());
@@ -21,10 +28,31 @@ public class ResponseRest  {
         return  new ResponseEntity<RestVO>(restVO,HttpStatus.BAD_REQUEST);
     }
 
+    /**
+     * 200
+     * @param request
+     * @param message
+     * @param object
+     * @return
+     */
     public static ResponseEntity getRestVoOKSuccess(HttpServletRequest request, String message, Object object){
         String path = request.getRequestURI();
         Timestamp timestamp =  new Timestamp(System.currentTimeMillis());
         RestVO restVO = new RestVO(timestamp.getTime(), HttpStatus.OK.value(), message , HttpStatus.OK.getReasonPhrase(), path , object);
+        return  new ResponseEntity<RestVO>(restVO,HttpStatus.OK);
+    }
+
+    /**
+     * 500
+     * @param request
+     * @param message
+     * @param object
+     * @return
+     */
+    public static ResponseEntity getRestVoServerError(HttpServletRequest request, String message){
+        String path = request.getRequestURI();
+        Timestamp timestamp =  new Timestamp(System.currentTimeMillis());
+        RestVO restVO = new RestVO(timestamp.getTime(), HttpStatus.INTERNAL_SERVER_ERROR.value(), message , HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(), path );
         return  new ResponseEntity<RestVO>(restVO,HttpStatus.OK);
     }
 }

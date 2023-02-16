@@ -2,6 +2,10 @@ spring:
   mvc:
     view:
       prefix: /WEB-INF/views/
+  batch:
+    jdbc:
+      initialize-schema: always
+
 
 server:
   port: 8080

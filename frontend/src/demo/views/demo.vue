@@ -2,6 +2,8 @@
   <h3>{{ message }}</h3>
   <button @click="messagesReverse(message);">{{ message }}</button>
   <button @click="requestRestController();">{{ restResponse }}</button>
+  <input type="checkbox" id="checkbox" v-model="checked">
+  <label for="checkbox">Checked: {{ checked }}</label>
 </template>
 
 <script>
@@ -11,7 +13,8 @@ export default {
   name: "demo",
   data: () => ({
     message: 'HELLO WORLD!',
-    restResponse: 'null'
+    restResponse: null,
+    checked : true
   }),
   methods: {
     messagesReverse(text) {
@@ -30,6 +33,7 @@ export default {
       axios(config)
           .then(function (response) {
             console.log(JSON.stringify(response.data));
+            this.restResponse = JSON.stringify(response.data);
           })
           .catch(function (error) {
             console.log(error);
